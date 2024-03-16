@@ -13,6 +13,10 @@
 						<source media="(min-width:0px)" :srcset="item.sourceXLarge">
 						<img :src="item.img">
 					</picture>
+					<figcaption class="feature-card-description">
+						<p>Advanced Cameras</p>
+						<p class="typography-card-headline">Selfie-takers. <br>Movie-makers. <br>Boundary-breakers.</p>
+					</figcaption>
 				</figure>
 			</div>
 			
