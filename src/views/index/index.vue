@@ -41,7 +41,7 @@
 		<li>123</li>
 		<li>123</li>
 	</ul>
-	<div class="gallery" ref="galleryRef" :class="isLoaded ? 'gallery-lazy': 'staggered-start'">
+	<div class="gallery  animate__bounce animate__fadeIn animate__slideInUp" ref="galleryRef" :class="isLoaded ? 'gallery-lazy animate__animated': 'staggered-start'">
 		<div class="scroll-container">
 			<div class="item-container">
 				<figure 

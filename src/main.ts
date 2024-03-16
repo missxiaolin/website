@@ -19,6 +19,8 @@ import I18n from "@/language/index";
 // pinia store
 import pinia from "@/store/index";
 
+import "animate.css"
+
 const app = createApp(App);
 
 // 注册element Icons组件

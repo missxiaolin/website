@@ -20,6 +20,24 @@ const homeRouter: Array<RouteRecordRaw> = [
 				}
 			}
 		]
+	},
+	{
+		path: "/index",
+		component: Layout,
+		redirect: "/index/index",
+		children: [
+			{
+				path: "index",
+				name: "index",
+				component: () => import("@/views/index/index.vue"),
+				meta: {
+					keepAlive: true,
+					requiresAuth: true,
+					title: "首页",
+					key: "index"
+				}
+			}
+		]
 	}
 ];
 
