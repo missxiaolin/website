@@ -1,32 +1,21 @@
 <template>
-	<div class="gallery gallery-align-start gallery-feature-cards">
+	<div class="gallery">
 		<div class="scroll-container">
 			<div class="item-container">
-				<ul class="card-set">
-					<li class="gallery-item grid-item current" v-for="item in imgList" :key="item.img">
-						<div class="feature-card card-container">
-							<div class="card">
-								<div class="card-modifier card-padding theme-dark fixed-width">
-									<div class="card-viewport-content">
-										<div class="feature-card-content">
-											<div class="feature-card-copy"></div>
-											<figure class="feature-card-image-container image-bottom-center">
-												<picture class="overview-consider-camera feature-card-image loaded">
-													<source media="(max-width:734px)" :srcset="item.sourceSmall">
-													<source media="(max-width:1068px)" :srcset="item.sourceMedium">
-													<source media="(max-width:1440px)" :srcset="item.sourceLarge">
-													<source media="(min-width:0px)" :srcset="item.sourceXLarge">
-													<img :src="item.img">
-												</picture>
-											</figure>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-				</ul>
+				<figure 
+					class="feature-card-image-container feature-card"
+					v-for="item in imgList" 
+					:key="item.img">
+					<picture class="feature-card-image">
+						<source media="(max-width:734px)" :srcset="item.sourceSmall">
+						<source media="(max-width:1068px)" :srcset="item.sourceMedium">
+						<source media="(max-width:1440px)" :srcset="item.sourceLarge">
+						<source media="(min-width:0px)" :srcset="item.sourceXLarge">
+						<img :src="item.img">
+					</picture>
+				</figure>
 			</div>
+			
 		</div>
 	</div>
 </template>
