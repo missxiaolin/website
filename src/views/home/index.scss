@@ -81,7 +81,14 @@
 
 }
 
-.gallery {
+
+.staggered-start {
+	animation: none;
+	opacity: 0
+}
+
+.gallery-lazy {
+	display: block;
 	animation: fadeIn calc(var(--global-staggered-opacity-duration)*1s) var(--global-animation-easing-function) both;
 	animation-delay: calc(var(--global-staggered-delay)*4s)
 }

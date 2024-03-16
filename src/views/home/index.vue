@@ -1,5 +1,47 @@
 <template>
-	<div class="gallery">
+	<ul>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+		<li>123</li>
+	</ul>
+	<div class="gallery" ref="galleryRef" :class="isLoaded ? 'gallery-lazy': 'staggered-start'">
 		<div class="scroll-container">
 			<div class="item-container">
 				<figure 
@@ -25,6 +67,8 @@
 </template>
 
 <script setup lang="ts" name="home">
+import { onMounted, ref } from "vue";
+import { useIntersectionObserver } from "@vueuse/core";
 
 interface ImgItem {
 	img: string,
@@ -91,7 +135,33 @@ const imgList: ImgItem[] = [
 		sourceLarge: 'https://www.apple.com/v/iphone/home/bt/images/overview/consider/environment__d1g8uhlvrccy_large.jpg',
 		sourceXLarge: 'https://www.apple.com/v/iphone/home/bt/images/overview/consider/environment__d1g8uhlvrccy_xlarge_2x.jpg',
 	},
-]
+];
+
+const galleryRef = ref<HTMLElement>();
+const isLoaded = ref(false);
+
+// observer: IntersectionObserver
+const callback = (entries: IntersectionObserverEntry[]) => {
+	entries.forEach((entry) => {
+		if (entry.isIntersecting && !isLoaded.value) {
+			// 懒加载逻辑
+			isLoaded.value = true;
+		}
+	});
+}
+
+onMounted(() => {
+	// 懒加载收藏卡片
+	useIntersectionObserver(galleryRef.value, callback, {
+		// 表示重叠面积占被观察者的比例，从 0 - 1 取值，
+		// 1 表示完全被包含
+		// 目标元素与根元素的交叉比例，可以是单一的 number 也可以是 number 数组，比如，[0, 0.25, 0.5, 0.75, 1]就表示当目标元素 0%、25%、50%、75%、100% 可见时，会触发回调函数。
+		threshold: 0,
+		// root：指定根元素，用于检查目标的可见性。必须是目标元素的父级元素。如果未指定或者为null，则默认为浏览器视窗。
+		// rootMargin：根元素的外边距，类似于 CSS 中的margin属性。
+	});
+});
+
 </script>
 
 <style scoped lang="scss">
