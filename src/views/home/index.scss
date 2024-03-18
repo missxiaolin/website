@@ -91,7 +91,7 @@
 	display: block;
 	top: 40px;
 	animation: fadeIn calc(var(--global-staggered-opacity-duration)*1s) var(--global-animation-easing-function) both;
-	animation-delay: calc(var(--global-staggered-delay)*1s)
+	animation-delay: calc(var(--global-staggered-delay)*0.5s)
 }
 
 @keyframes fadeIn {
